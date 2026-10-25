@@ -1,0 +1,40 @@
+// ==============================================================================
+// Projeto Final Avaliativo - Módulo 01 - Semana 13
+// BookStore Manager CLI
+// Diagrama Entidade-Relacionamento (DER) / DBML (dbdiagram.io)
+// ==============================================================================
+
+Table autores {
+  id serial [pk, increment]
+  nome varchar(150) [not null]
+  nacionalidade varchar(100) [not null]
+  data_nascimento date
+}
+
+Table livros {
+  id serial [pk, increment]
+  titulo varchar(200) [not null]
+  id_autor int [not null, ref: > autores.id]
+  genero varchar(50) [not null]
+  ano_publicacao int [not null, note: 'CHECK (ano_publicacao > 0)']
+  quantidade_total int [not null, default: 1, note: 'CHECK (quantidade_total >= 0)']
+  quantidade_disponivel int [not null, default: 1, note: 'CHECK (quantidade_disponivel >= 0 AND quantidade_disponivel <= quantidade_total)']
+}
+
+Table clientes {
+  id serial [pk, increment]
+  nome varchar(150) [not null]
+  email varchar(150) [unique, not null]
+  telefone varchar(20) [not null]
+  data_cadastro date [not null, default: `CURRENT_DATE`]
+}
+
+Table emprestimos {
+  id serial [pk, increment]
+  id_livro int [not null, ref: > livros.id]
+  id_cliente int [not null, ref: > clientes.id]
+  data_emprestimo timestamp [not null, default: `CURRENT_TIMESTAMP`]
+  data_devolucao_prevista date [not null]
+  data_devolucao timestamp [null]
+  status varchar(20) [not null, default: 'EMPRESTADO', note: 'CHECK (status IN (\'EMPRESTADO\', \'DEVOLVIDO\', \'ATRASADO\'))']
+}
