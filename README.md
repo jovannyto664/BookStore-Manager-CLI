@@ -237,5 +237,5 @@ ID do Cliente: 3
 ## 13. Integrantes da Equipe e Gestão
 
 - **Desenvolvedor:** Jeovanny (Jovannyto)
-- **Quadro Kanban de Gestão:** [Acesse o Quadro de Tarefas no GitHub Projects / Trello](https://github.com/users/jovannyto664/projects/4)
+- **Quadro Kanban de Gestão:** [Acesse o Quadro de Tarefas no GitHub Projects](https://github.com/users/jovannyto664/projects/4)
 >>>>>>> Stashed changes
