@@ -1,7 +1,3 @@
-/**
- * Utilitários para formatação e manipulação de datas no sistema.
- */
-
 export function formatarData(data: Date): string {
     return data.toLocaleDateString("pt-BR", { timeZone: "UTC" });
 }
