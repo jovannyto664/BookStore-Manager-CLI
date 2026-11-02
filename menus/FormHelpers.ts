@@ -1,8 +1,7 @@
 import type { ConsoleIO } from "./ConsoleIO"
+import { formatarData, validarFormatoDataISO } from "../utils"
 
-export function formatarData(data: Date): string {
-    return data.toLocaleDateString("pt-BR", { timeZone: "UTC" })
-}
+export { formatarData }
 
 export async function pedirTexto(
     io: ConsoleIO,
@@ -51,13 +50,8 @@ export async function pedirData(
 
         if (entrada.length === 0 && valorAtual !== undefined) return valorAtual
 
-        const data = new Date(`${entrada}T00:00:00`)
-        if (
-            /^\d{4}-\d{2}-\d{2}$/.test(entrada) &&
-            !Number.isNaN(data.getTime()) &&
-            data.toISOString().slice(0, 10) === entrada
-        ) {
-            return data
+        if (validarFormatoDataISO(entrada)) {
+            return new Date(`${entrada}T00:00:00`)
         }
 
         io.exibir("Informe uma data válida no formato AAAA-MM-DD.")
@@ -75,13 +69,8 @@ export async function pedirDataOpcional(
 
     if (entrada.length === 0) return valorAtual
 
-    const data = new Date(`${entrada}T00:00:00`)
-    if (
-        /^\d{4}-\d{2}-\d{2}$/.test(entrada) &&
-        !Number.isNaN(data.getTime()) &&
-        data.toISOString().slice(0, 10) === entrada
-    ) {
-        return data
+    if (validarFormatoDataISO(entrada)) {
+        return new Date(`${entrada}T00:00:00`)
     }
 
     io.exibir("Data inválida, mantendo o valor atual.")
