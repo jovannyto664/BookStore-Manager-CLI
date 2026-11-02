@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-# BookStore-Manager-CLI
-=======
 # BookStore Manager CLI
 
 Aplicação executável via terminal (CLI) desenvolvida em **Node.js** com **TypeScript** para gerenciamento de uma pequena livraria. O sistema permite administrar autores, livros, clientes e empréstimos mantendo os dados em memória durante a execução, acompanhado da modelagem relacional completa e script SQL para PostgreSQL.
